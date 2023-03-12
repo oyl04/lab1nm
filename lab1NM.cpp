@@ -33,7 +33,7 @@ void Simple(double eps){
     cout << int(log(abs(Phi(xn)-xn) / ((1 - q) * eps)) / log(1 / q)) + 1 << '\n';
     cout << "q = " << q << '\n';
     OutputIter(i++);
-    cout << "xn = " << xn << "xn - phi(xn) = " << xn - Phi(xn) << '\n';
+    cout << fixed << setprecision(8) << "xn = " << xn << " xn - phi(xn) = " << xn - Phi(xn) << '\n';
     while (true){
         nextx = Phi(xn);
         if (abs(nextx - xn) < (1 - q) / q * eps){
@@ -41,7 +41,7 @@ void Simple(double eps){
         }
         OutputIter(i++);
         xn = nextx;
-        cout << "xn = " << xn << " xn - phi(xn) = " << xn - Phi(xn) << '\n';
+        cout << fixed << setprecision(8) << "xn = " << xn << " xn - phi(xn) = " << xn - Phi(xn) << '\n';
     }
 }
 
@@ -87,13 +87,13 @@ void Relaxation(double eps){
     double dif;
     int i = 0;
     OutputIter(i++);
-    cout << "xn = " << x0 << " F(xn) = " << F(x0) << '\n';
+    cout << fixed << setprecision(8) << "xn = " << x0 << " F(xn) = " << F(x0) << '\n';
     do{
         xn = x0 - tao * F(x0);
         dif = abs(xn - x0);
         x0 = xn;
         OutputIter(i++);
-        cout << "xn = " << xn << " F(xn) = " << F(xn) << '\n';
+        cout << fixed << setprecision(8) << "xn = " << xn << " F(xn) = " << F(xn) << '\n';
     }
     while(dif > eps);
 }
