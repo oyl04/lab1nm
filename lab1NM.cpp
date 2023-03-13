@@ -16,9 +16,9 @@ double Phi (double x){
 
 void OutputIter(int it){
     if (it == 0) cout << "zero";
-    else if (it % 10 == 1 && it != 11) cout << "1-st";
-    else if (it % 10 == 2 && it != 12) cout << "2-nd";
-    else if (it % 10 == 3 && it != 13) cout << "3-rd";
+    else if (it % 10 == 1 && it != 11) cout << it << "-st";
+    else if (it % 10 == 2 && it != 12) cout << it << "-nd";
+    else if (it % 10 == 3 && it != 13) cout << it << "-rd";
     else cout << it << "-th";
     cout << " iteration: ";
 }
