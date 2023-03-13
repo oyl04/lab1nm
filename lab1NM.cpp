@@ -16,9 +16,9 @@ double Phi (double x){
 
 void OutputIter(int it){
     if (it == 0) cout << "zero";
-    else if (it == 1) cout << "1-st";
-    else if (it == 2) cout << "2-nd";
-    else if (it == 3) cout << "3-rd";
+    else if (it % 10 == 1 && it != 11) cout << "1-st";
+    else if (it % 10 == 2 && it != 12) cout << "2-nd";
+    else if (it % 10 == 3 && it != 13) cout << "3-rd";
     else cout << it << "-th";
     cout << " iteration: ";
 }
@@ -26,7 +26,7 @@ void OutputIter(int it){
 void Simple(double eps){
     cout << "Simple iteration method\n\n";
     double xn = 4.5;
-    double q = 36 / (3 * cbrt(67 * 67));
+    double q = 36 / (3 * Phi(4) * Phi(4));
     double nextx;
     int i = 0;
     cout << "A priori estimation is equal to: ";
@@ -78,13 +78,13 @@ void Relaxation(double eps){
     double M = abs(dF(b));
     double m = abs(dF(a));
     double q = double(M - m) / (M + m);
-    cout << "m1 = " << m << " M1 = " << M << " tao = 2 / (m1 + M1) = " << 2. / 43;
-    cout << " q = (M1 - m1) / (M1 + m1) = " << q << '\n';
-    cout << "A priori estimation is equal to: ";
-    cout << int(log(0.5 / eps) / log(1 / q) + 1) << '\n';
     double tao = 2 / (m + M);
     double x0 = b, xn;
     double dif;
+    cout << "m1 = " << m << " M1 = " << M << " tao = 2 / (m1 + M1) = " << tao;
+    cout << " q = (M1 - m1) / (M1 + m1) = " << q << '\n';
+    cout << "A priori estimation is equal to: ";
+    cout << int(log(0.5 / eps) / log(1 / q) + 1) << '\n';
     int i = 0;
     OutputIter(i++);
     cout << fixed << setprecision(8) << "xn = " << x0 << " F(xn) = " << F(x0) << '\n';
@@ -100,8 +100,8 @@ void Relaxation(double eps){
 
 int main (){
     double eps = 1e-4;
-    Relaxation(eps);
-    Dichotomy(eps);
+    //Relaxation(eps);
+    //Dichotomy(eps);
     Simple(eps);
     return 0;
 }
